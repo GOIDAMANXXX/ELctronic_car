@@ -1,12 +1,231 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ЭлектроМастер</title>
-  </head>
-  <body>
-<script type="module" src="./src/main.jsx"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CARLAB — Auto Electrical & Chip Tuning</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2kGkGkHk2Q2y3b0m3q5K5Q5e1q9o3u7f+5s5R0M=" crossorigin=""/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">⚡<span class="logo-text">CARLAB</span></div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#hero" data-i18n="nav_home">Home</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="controls">
+      <div class="lang-wrap">
+        <label for="language-switcher" class="visually-hidden">Language</label>
+        <select id="language-switcher" aria-label="Language switcher">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="ka">KA</option>
+        </select>
+      </div>
+      <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <h1 data-i18n="title">Welcome to CARLAB</h1>
+        <p class="subtitle" data-i18n="subtitle">Professional auto electrical services & chip tuning in Tbilisi</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn" data-i18n="book_now">Book a visit</a>
+          <a href="#services" class="btn btn-ghost" data-i18n="our_services">Our services</a>
+        </div>
+      </div>
+      <div class="hero-image" aria-hidden="true">
+        <img src="assets/outback_2006.jpg" alt="Subaru Outback 2006" />
+      </div>
+    </section>
+
+    <section id="services" class="section services">
+      <h2 data-i18n="services_title">Services</h2>
+      <div class="cards">
+        <article class="card">
+          <h3 data-i18n="service_electrics">Auto Electrics</h3>
+          <p data-i18n="service_electrics_desc">Diagnostics, wiring repairs, alternators, starters, lighting and sensors.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="service_repair">General Auto Repair</h3>
+          <p data-i18n="service_repair_desc">Brake systems, suspension, engine tune-ups and preventive maintenance.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="service_chip">Chip Tuning</h3>
+          <p data-i18n="service_chip_desc">ECU remapping, performance optimization and fuel-efficiency tuning.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <h2 data-i18n="about_title">About Us</h2>
+      <p data-i18n="about_desc">CARLAB is a modern auto service in Tbilisi focused on high-quality diagnostics and electronics. Our engineers combine precise diagnostics with tech-driven workflows to deliver fast and reliable repairs.</p>
+      <ul class="features">
+        <li data-i18n="feature_professional">Experienced technicians</li>
+        <li data-i18n="feature_warranty">Warranty on work</li>
+        <li data-i18n="feature_fast">Fast diagnostics</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2 data-i18n="contact_title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p><strong data-i18n="address_label">Address:</strong> <span data-i18n="address_text">Tbilisi, Georgia</span></p>
+          <p><strong data-i18n="phone_label">Phone:</strong> <a href="tel:+995555123456">+995 555 12 34 56</a></p>
+          <p><strong data-i18n="hours_label">Hours:</strong> <span data-i18n="hours_text">Mon–Sat 9:00–19:00</span></p>
+          <div class="socials">
+            <a href="#" aria-label="instagram">IG</a>
+            <a href="#" aria-label="telegram">TG</a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form id="contact-form" action="https://formspree.io/f/your_form_id" method="POST">
+            <label for="name" data-i18n="form_name">Name</label>
+            <input id="name" name="name" required>
+
+            <label for="email" data-i18n="form_email">Email</label>
+            <input id="email" name="_replyto" type="email" required>
+
+            <label for="message" data-i18n="form_message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <input type="hidden" name="_language" id="lang-hidden" value="en">
+            <button type="submit" class="btn" data-i18n="send">Send</button>
+          </form>
+        </div>
+
+        <div class="map" id="map" aria-label="Map showing location"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>© <span id="year"></span> CARLAB — <span data-i18n="footer_rights">All rights reserved.</span></div>
+      <div class="small-note" data-i18n="footer_made">Designed for modern auto services</div>
+    </footer>
+  </main>
+
+  <script type="application/json" id="i18n-json">
+{
+  "en": {
+    "nav_home":"Home",
+    "nav_services":"Services",
+    "nav_about":"About",
+    "nav_contact":"Contact",
+    "title":"Welcome to CARLAB",
+    "subtitle":"Professional auto electrical services & chip tuning in Tbilisi",
+    "book_now":"Book a visit",
+    "our_services":"Our services",
+    "services_title":"Services",
+    "service_electrics":"Auto Electrics",
+    "service_electrics_desc":"Diagnostics, wiring repairs, alternators, starters, lighting and sensors.",
+    "service_repair":"General Auto Repair",
+    "service_repair_desc":"Brake systems, suspension, engine tune-ups and preventive maintenance.",
+    "service_chip":"Chip Tuning",
+    "service_chip_desc":"ECU remapping, performance optimization and fuel-efficiency tuning.",
+    "about_title":"About Us",
+    "about_desc":"CARLAB is a modern auto service in Tbilisi focused on high-quality diagnostics and electronics. Our engineers combine precise diagnostics with tech-driven workflows to deliver fast and reliable repairs.",
+    "feature_professional":"Experienced technicians",
+    "feature_warranty":"Warranty on work",
+    "feature_fast":"Fast diagnostics",
+    "contact_title":"Contact",
+    "address_label":"Address:",
+    "address_text":"Tbilisi, Georgia",
+    "phone_label":"Phone:",
+    "hours_label":"Hours:",
+    "hours_text":"Mon–Sat 9:00–19:00",
+    "form_name":"Name",
+    "form_email":"Email",
+    "form_message":"Message",
+    "send":"Send",
+    "footer_rights":"All rights reserved.",
+    "footer_made":"Designed for modern auto services"
+  },
+  "ru": {
+    "nav_home":"Главная",
+    "nav_services":"Услуги",
+    "nav_about":"О нас",
+    "nav_contact":"Контакты",
+    "title":"Добро пожаловать в CARLAB",
+    "subtitle":"Профессиональная автоэлектрика и чип-тюнинг в Тбилиси",
+    "book_now":"Записаться",
+    "our_services":"Наши услуги",
+    "services_title":"Услуги",
+    "service_electrics":"Автоэлектрика",
+    "service_electrics_desc":"Диагностика, ремонт проводки, генераторы, стартеры, освещение и датчики.",
+    "service_repair":"Общий ремонт",
+    "service_repair_desc":"Тормоза, подвеска, обслуживание двигателя и профилактика.",
+    "service_chip":"Чип-тюнинг",
+    "service_chip_desc":"Перепрошивка ЭБУ, оптимизация мощности и экономичности.",
+    "about_title":"О нас",
+    "about_desc":"CARLAB — современный автосервис в Тбилиси, ориентированный на качественную диагностику и электронику. Наши инженеры совмещают точную диагностику с технологичными процессами, чтобы быстро и надёжно ремонтировать автомобили.",
+    "feature_professional":"Опытные техники",
+    "feature_warranty":"Гарантия на работу",
+    "feature_fast":"Быстрая диагностика",
+    "contact_title":"Контакты",
+    "address_label":"Адрес:",
+    "address_text":"Тбилиси, Грузия",
+    "phone_label":"Телефон:",
+    "hours_label":"Часы работы:",
+    "hours_text":"Пн–Сб 9:00–19:00",
+    "form_name":"Имя",
+    "form_email":"Почта",
+    "form_message":"Сообщение",
+    "send":"Отправить",
+    "footer_rights":"Все права защищены.",
+    "footer_made":"Создано для современных автосервисов"
+  },
+  "ka": {
+    "nav_home":"მთავარი",
+    "nav_services":"სერვისები",
+    "nav_about":"ჩვენ შესახებ",
+    "nav_contact":"კონტაქტი",
+    "title":"მოგესალმებით CARLAB-ში",
+    "subtitle":"ავტოელექტრიკა და ჩიპ-ტუნინგი თბილისში",
+    "book_now":"Მოითხოვე შეხვედრა",
+    "our_services":"ჩვენი სერვისები",
+    "services_title":"სერვისები",
+    "service_electrics":"ავტოელექტრიკა",
+    "service_electrics_desc":"დიაგნოსტიკა, სადენების შეკეთება, ალტერნატორები, სტარტერები, განათება და სენსორები.",
+    "service_repair":"საერთო რემონტი",
+    "service_repair_desc":"მუხრუჭები, სამაგრები, ძრავის მომსახურება და პრევენცია.",
+    "service_chip":"ჩიპ-ტუნინგი",
+    "service_chip_desc":"ECU-ის გადამტვირთვა, შესრულების ოპტიმიზაცია და საწვავის ეკონომიკა.",
+    "about_title":"ჩვენ შესახებ",
+    "about_desc":"CARLAB თანამედროვე ავტოსერვისია თბილისში, რომელიც ორიენტირებულია მაღალი ხარისხის დიაგნოსტიკასა და ელექტრონიკაზე. ჩვენი ინჟინრები აერთიანებენ ზუსტ დიაგნოსტიკას და ტექნოლოგიურ პროცესებს სწრაფი და საიმედო რემონტისთვის.",
+    "feature_professional":"გამოცდილი ტექნიკოსები",
+    "feature_warranty":"სამუშაოზე გარანტია",
+    "feature_fast":"სწრაფი დიაგნოსტიკა",
+    "contact_title":"კონტაქტი",
+    "address_label":"მისამართი:",
+    "address_text":"თბილისი, საქართველო",
+    "phone_label":"ტელეფონი:",
+    "hours_label":"სამსახურის საათები:",
+    "hours_text":"სამ–შაბ 9:00–19:00",
+    "form_name":"სახელი",
+    "form_email":"ელფოსტა",
+    "form_message":"შეტყობინება",
+    "send":"გაგზავნა",
+    "footer_rights":"ყველა უფლებანი დაცულია.",
+    "footer_made":"დიზაინი თანამედროვე ავტოსერვისებისთვის"
+  }
+}
+</script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-VpM3D1Q4YQqgq9k1y+XQx5m3t0p3Zb+6nFZ2fJ2l6sY=" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
 </html>
