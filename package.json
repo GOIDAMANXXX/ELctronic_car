@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.263.0",
@@ -16,7 +14,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
-    "gh-pages": "^6.1.1",
     "vite": "^4.5.14"
   },
   "homepage": "https://goidamanxxx.github.io/ELctronic_car"
