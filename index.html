@@ -1,157 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>АвтоПрофи — Автомастерская</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <div class="layout">
+    <!-- Боковая навигация слева -->
+    <aside class="sidebar">
+      <h2 class="logo">АвтоПрофи</h2>
+      <nav>
+        <ul>
+          <li><a href="#home">Главная</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#contact">Контакты</a></li>
+          <li><a href="#message">Написать</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f7f7f7;
-  color: #222;
-}
+    <!-- Основной контент -->
+    <main class="main-content">
+      
+      <!-- Главная -->
+      <section id="home" class="hero">
+        <div class="hero-text">
+          <h1>Добро пожаловать в <span>"АвтоПрофи"</span></h1>
+          <p>Надежный партнёр по ремонту и обслуживанию автомобилей.</p>
+        </div>
+        <div class="hero-image">
+          <img src="images/subaru-outback.png" alt="Subaru Outback 2006" />
+        </div>
+      </section>
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-}
+      <!-- Услуги -->
+      <section id="services">
+        <h2>Наши услуги</h2>
+        <ul>
+          <li>Диагностика</li>
+          <li>Ремонт двигателя</li>
+          <li>Замена масла</li>
+          <li>Шиномонтаж</li>
+        </ul>
+      </section>
 
-/* ===== Сайдбар ===== */
-.sidebar {
-  width: 240px;
-  background-color: #1f1f1f;
-  color: white;
-  padding: 30px 20px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
+      <!-- Контакты -->
+      <section id="contact">
+        <h2>Контакты</h2>
+        <p>г. Тбилиси, ул. Автошоссе 12</p>
+        <p>Телефон: +995 500 70 31 08</p>
+        <p>Email: info@autoprofi.ge</p>
+      </section>
 
-.sidebar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
+      <!-- Форма -->
+      <section id="message">
+        <h2>Напишите нам</h2>
+        <form id="contactForm">
+          <input type="text" placeholder="Ваше имя" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Ваше сообщение..." required></textarea>
+          <button type="submit">Отправить</button>
+        </form>
+      </section>
 
-.sidebar nav ul {
-  list-style: none;
-}
+    </main>
+  </div>
 
-.sidebar nav ul li {
-  margin: 20px 0;
-}
-
-.sidebar nav ul li a {
-  text-decoration: none;
-  color: #ccc;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-.sidebar nav ul li a:hover {
-  color: white;
-}
-
-/* ===== Контент ===== */
-.main-content {
-  flex: 1;
-  padding: 40px;
-}
-
-/* ===== Главная секция ===== */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.hero-text {
-  flex: 1;
-  min-width: 280px;
-}
-
-.hero-text h1 {
-  font-size: 28px;
-  margin-bottom: 15px;
-}
-
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-image img {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* ===== Услуги, контакты, форма ===== */
-section {
-  margin-bottom: 60px;
-}
-
-h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-ul {
-  padding-left: 20px;
-  line-height: 1.6;
-}
-
-form {
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-form input,
-form textarea {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-form button {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #1f7aed;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: #155acb;
-}
-
-/* ===== Адаптив ===== */
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .main-content {
-    padding: 20px;
-  }
-
-  .hero {
-    flex-direction: column;
-  }
-}
+  <script src="js/script.js"></script>
+</body>
+</html>
