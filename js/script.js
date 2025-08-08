@@ -53,5 +53,13 @@ form.addEventListener('submit', function (e) {
   // Имитация отправки (в реальности тут нужен бэкенд или сервис)
   alert("Спасибо, ваше сообщение отправлено!");
 
-  form.reset(); // очистить форму
+  form.reset(); // очистить форму 
+  // Открытие/закрытие меню на мобильных
+const burger = document.getElementById('burger');
+const navMenu = document.getElementById('navMenu');
+
+burger.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
 });
+
+
