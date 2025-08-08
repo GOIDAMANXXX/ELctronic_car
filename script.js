@@ -15,6 +15,11 @@ function applyTranslations(lang){
   // also update hidden lang for forms
   const langHidden = document.getElementById('lang-hidden');
   if(langHidden) langHidden.value = lang;
+
+  // Update map popup if map exists
+  if(window.marker && i18n[lang] && i18n[lang].map_popup){
+    window.marker.bindPopup(i18n[lang].map_popup);
+  }
 }
 
 function applyTheme(theme){
@@ -54,14 +59,26 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 function initMap(){
   const mapEl = document.getElementById('map');
   if(!mapEl) return;
-  // Coordinates: Tbilisi center (approx)
-  const lat = 41.7151, lon = 44.8271;
-  const map = L.map('map').setView([lat, lon], 13);
+  // Coordinates: Tengiz Sheshelidze St 19A
+  const lat = 41.787451, lon = 44.804292;
+  const map = L.map('map').setView([lat, lon], 16);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap contributors'
   }).addTo(map);
-  L.marker([lat, lon]).addTo(map).bindPopup('CARLAB — Tbilisi').openPopup();
+  window.marker = L.marker([lat, lon]).addTo(map);
+  // bind popup in current language
+  const lang = localStorage.getItem('carlab_lang') || 'en';
+  const popupText = (i18n[lang] && i18n[lang].map_popup) ? i18n[lang].map_popup : 'CARLAB — Tbilisi';
+  window.marker.bindPopup(popupText).openPopup();
 }
 
-document.addEventListener('DOMContentLoaded', initMap);
+document.addEventListener('DOMContentLoaded', ()=>{
+  initMap();
+  // small entrance animation for cards
+  document.querySelectorAll('.card').forEach((el,i)=>{
+    el.style.opacity = 0;
+    setTimeout(()=> el.style.transition = 'opacity .45s ease, transform .45s ease', 120*i);
+    setTimeout(()=> el.style.opacity = 1, 150 + 120*i);
+  });
+});

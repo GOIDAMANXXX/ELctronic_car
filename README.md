@@ -1,9 +1,5 @@
-# CARLAB — Static site
+# CARLAB — Final static site
 
-This is a minimal static site for an auto service. Replace the Formspree form action with your form endpoint.
+This build includes map marker at Tengiz Sheshelidze St 19A (coords 41.787451, 44.804292), mini-animations and a Honda-style SVG placeholder.
 
-Files:
-- index.html
-- style.css
-- script.js
-- assets/outback_2006.jpg
+Replace Formspree action and images as needed.

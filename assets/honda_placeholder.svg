@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#1fb6ff"/>
+      <stop offset="1" stop-color="#0ea5a4"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#0f172a}
+      .glass{fill:#e6eef8;opacity:0.06}
+      .line{stroke:url(#g);stroke-width:10;fill:none;stroke-linecap:round;stroke-linejoin:round}
+      .text{font-family:Inter, Arial, sans-serif; font-size:42px; fill:#0f172a}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <!-- Stylized minimal hatchback silhouette -->
+  <path class="line" d="M120 450 C200 350, 320 300, 470 300 C600 300, 700 330, 840 360 C920 380, 980 420, 1060 460 L1060 520 L1000 520 C980 520,960 540,940 540 L860 540 C840 540,820 520,800 520 L320 520 C300 520,280 500,260 500 L200 500 L160 500 Z" />
+  <!-- wheels -->
+  <circle cx="360" cy="540" r="40" fill="#0f172a"/>
+  <circle cx="860" cy="540" r="40" fill="#0f172a"/>
+  <!-- badge area -->
+  <rect x="40" y="40" width="220" height="80" rx="12" fill="url(#g)" />
+  <text x="150" y="95" text-anchor="middle" class="text" fill="#ffffff">CARLAB</text>
+  <!-- Note -->
+  <text x="60" y="660" font-size="18" fill="#6b7280">Placeholder — Honda-style (minimal silhouette, not a logo)</text>
+</svg>
