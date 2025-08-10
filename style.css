@@ -106,3 +106,24 @@ body.dark-theme{
   .hero-image{order:2}
 }
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+#theme-toggle,
+#lang-select {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 4px;
+}
+
+#theme-toggle:hover,
+#lang-select:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.light #theme-toggle:hover,
+body.light #lang-select:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
