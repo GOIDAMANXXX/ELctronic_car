@@ -27,7 +27,6 @@ function applyTheme(theme){
   else document.body.classList.remove('dark-theme');
   localStorage.setItem('carlab_theme', theme);
 }
-
 // Setup initial UI
 langSwitcher.value = savedLang;
 applyTranslations(savedLang);
